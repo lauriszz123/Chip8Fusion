@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.laurynas'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'party.iroiro.luajava:luajit:3.4.0'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    runtimeOnly 'party.iroiro.luajava:luajit-platform:3.4.0:natives-desktop'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.laurynas.main.Main'
+        )
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
